@@ -1,0 +1,36 @@
+# 依赖目录
+node_modules/
+
+# 构建产物
+dist/
+dist-ssr/
+
+# 编辑器 & IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 日志文件
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite 缓存
+.vite/
