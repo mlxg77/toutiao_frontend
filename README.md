@@ -203,6 +203,8 @@ Pinia 是这个项目的**核心数据层**，所有跨组件共享的数据都�
 - **getters**：计算属性（≈ @Property / getter 方法）
 - **actions**：业务方法，包括调用后端 API（≈ Service 方法）
 
+> **目录分层说明**：`modules/` 里放的是平行的业务功能模块（新闻、收藏、历史），根目录放的是全局共享的基础状态（用户、主题、语言）。这样分层让目录结构更清晰，新增业务功能时只需往 `modules/` 里加文件，不会污染根目录。
+
 #### 8.1 `store/index.js` — Pinia 实例
 
 创建 Pinia 实例并启用持久化插件（`pinia-plugin-persistedstate`），使状态自动保存到 `localStorage`，刷新页面不丢失数据。
@@ -212,6 +214,8 @@ Pinia 是这个项目的**核心数据层**，所有跨组件共享的数据都�
   持久化插件 ≈ Spring Boot 的 Spring Session（会话持久化）
              ≈ FastAPI 的 SQLAlchemy ORM（数据持久化到数据库）
 ```
+
+> **一句话总结**：`store/index.js` 是 Pinia 的**工厂入口**，负责"造"出一个配好持久化插件的 pinia 实例，然后由 `main.js` 在应用启动时注册进去，之后所有组件里的 `useXxxStore()` 都在使用这个实例。
 
 #### 8.2 `store/user.js` — 用户 Store
 

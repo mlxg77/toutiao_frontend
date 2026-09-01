@@ -64,6 +64,8 @@ app.use(Popup)
 
 // 使用路由和状态管理
 app.use(router)
+// 将 Pinia 注册为 Vue 应用的全局插件
+// Vue 应用内部的 provide/inject 机制，将 pinia 实例注入到所有组件中。
 app.use(pinia)
 // Vue 应用（内存中）  →  挂载到  →  <div id="app"></div>（页面上）
 // #app 是一个 CSS 选择器，指向 id="app" 的那个 HTML 元素。
