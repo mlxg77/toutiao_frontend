@@ -126,6 +126,8 @@ export const useFavoriteStore = defineStore('favorite', () => {
     // 检查是否已存在相同ID的新闻
     if (!isFavorite.value(news.id)) {
       // 添加到收藏列表
+      // ...news：把 news 对象的所有属性展开到新对象中。
+      // .unshift()：在数组头部插入  
       favorites.value.unshift({
         ...news,
         favoriteTime: new Date().toLocaleString()
@@ -138,11 +140,13 @@ export const useFavoriteStore = defineStore('favorite', () => {
 
   // 取消收藏 - 本地
   function removeFavorite(id) {
+    // 过滤掉ID匹配的新闻
+    // filter()：创建一个新数组，包含通过测试的元素
     favorites.value = favorites.value.filter(item => item.id !== id);
     saveFavorites();
   }
 
-  // 切换收藏状态 - 结合API和本地
+  // 切换收藏状态 - 结合API和本地：已收藏 → 取消收藏；未收藏 → 添加收藏
   async function toggleFavorite(news) {
     // 确保news对象存在且有id属性
     if (!news || !news.id) {
